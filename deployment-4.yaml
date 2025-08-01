@@ -1,0 +1,22 @@
+#this K8s deployment for 4 nginx Pods with 80 port
+apiVersion: apps/v1
+kind      : Deployment
+metadata  :
+  name  : deployment-nginx
+  labels:
+    web: public
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      web: public
+  template:
+    metadata:
+      labels:
+        web: public
+    spec:
+      containers:
+      - name           : nginx
+        image          : nginx:1.14.2
+        ports          :
+        - containerPort: 80
